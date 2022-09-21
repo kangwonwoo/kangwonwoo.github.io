@@ -1,7 +1,7 @@
 ---
 title:      C# Grammar#02 | enum
 date:       "2022-09-08"
-categories: ["C#", "04.Data Structure"]
+categories: ["C#", "01.Data Structure"]
 tags:       ["C#", "Grammar", "Unity"]
 # pin:        true
 ---

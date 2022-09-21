@@ -1,7 +1,7 @@
 ---
 title:      C# Grammar#06 | Convert.Toint32()
 date:       "2022-09-19"
-categories: ["C#"]
+categories: ["C#", "01.Data Structure"]
 tags:       ["C#", "Grammar", "Unity"]
 # pin:        true
 ---

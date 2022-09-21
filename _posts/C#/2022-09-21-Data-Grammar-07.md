@@ -1,7 +1,7 @@
 ---
 title:      C# Grammar#07 | Audio
 date:       "2022-09-21"
-categories: ["C#"]
+categories: ["C#", "01.Data Structure"]
 tags:       ["C#", "Grammar", "Unity"]
 # pin:        true
 ---

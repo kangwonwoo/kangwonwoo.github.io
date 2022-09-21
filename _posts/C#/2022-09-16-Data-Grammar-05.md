@@ -1,7 +1,7 @@
 ---
 title:      C# Grammar#0x | Dictionary
 date:       "2022-09-16"
-categories: ["C#"]
+categories: ["C#", "01.Data Structure"]
 tags:       ["C#", "Grammar", "Unity"]
 # pin:        true
 ---
