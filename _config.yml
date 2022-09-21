@@ -21,7 +21,7 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Klog 신입개발자의 공부 블로그                           # the main title
+title: Klog 신입 프로그래머의 공부 블로그                           # the main title
 
 tagline: A text-focused Jekyll theme   # it will display as the sub-title
 
