@@ -1,5 +1,5 @@
 ---
-title:      C# Grammar#10 | 
+title:      C# Grammar#10 | Struct
 date:       "2022-09-30"
 categories: ["C#", "01.Data Structure"]
 tags:       ["C#", "Grammar", "Unity"]
