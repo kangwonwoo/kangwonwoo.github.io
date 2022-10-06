@@ -1,108 +1,62 @@
 ---
-title:      C# Grammar#14 | Reflection
+title:      C# Grammar#15 | Object Oriented Programming
 date:       "2022-10-06"
-categories: ["C#", "01.Data Structure"]
+categories: ["C#"]
 tags:       ["C#", "Grammar", "Unity"]
 # pin:        true
 ---
 
-# Reflection(리플렉션)
-- Unity를 C#으로 개발하다보면 “리플렉션”, 즉 ```reflection``` 이라는 단어를 종종 듣는다. 이는 C/C++에서 넘어온 개발자들이라면 다소 생소한 단어일 수 있다. 
-- Java는 ```java.lang.reflection``` 이라는 패키지로 ```reflection```을 지원하고, C#에서는 ```System.reflection``` 네임스페이스를 통해서 지원한다
-- 프로그래밍 언어에서 ```Reflection```이라는 말은 **```Runtime``` 시에 ```Object``` 객체의 형태나 타입에 대한 정보를 읽어 내는 것**을 말한다.
-- C#을 사용하는 유니티에선 실행 중에도 멤버에 무엇이 있는지를 체크하고 이에 접근할 수 있는 UI를 열어 주는 등등 C#의 리플렉션 기능을 활용한다.
+# Object Oriented Programming(객체 지향)
+- 객체 지향 프로그래밍(```Object-Oriented Programming```)은 객체(```Object```)를 중심으로 프로그램을 설계, 개발해 나가는 것 
+- 객체 지향 프로그래밍의 가장 큰 특징은 클래스를 이용해 함수(처리 부분), 변수(데이터 부분)를 하나로 묶어 객체(```Instance```)로 만들어 사용한다는 점
+- C#은 여러 언어의 장점을 결합한 객체지향 언어. 
+- 언어의 사용을 단순화하여 숫자를 객체와 같이 처리하게 하고, ```Collection```에 저장할 수 있게 해준다.
+- 박싱/언박싱의 개념을 가지고 있어 숫자를 객체로, 객체를 다시 숫자로 변경할 수 있게 해준다.
+- 객체로 사용할 필요가 없는 숫자는 단순 값으로 처리되어 효율적인 사용이 가능합니다.
 
-## .NET Reflection 
-- .NET 객체의 클래스 타입, 메서드, 프로퍼티 등의 메타 정보를 런타임 중에 알아내는 기능을 제공한다.
-- 이러한 메타 정보를 얻은 후, 직접 메서드를 호출하거나 프로퍼티를 변경하는 등의 작업도 가능하다.
-- 객체에서 메서드를 직접 호출하는 경우가 더 빠르겠지만, 어떤 경우는 런타임중에 이런 메타 정보가 동적으로 알아낼 필요가 있다. 예를 들어, 테스트 어셈블리에 있는 테스트 클래스들의 ```Public``` 메서드를 선별해서 이를 동적으로 호출하는 경우라든가, 특정 클래스 안에 지정된 이름의 멤버가 있는지 판단하는 경우 등등에 ```.NET Reflection```이 활용될 수 있다.
-
+## Procedural Programming(절차적)
+- 객체지향 프로그래밍에 대조되는 것으로 생각하여 절차지향 프로그래밍으로 알고 있는 사람이 많은데, "절차지향 프로그래밍 = 절차적 프로그래밍" 이며, "절차적 프로그래밍"이 조금 더 맞는 단어이다.
+- 절차적 프로그래밍이란 ```Procedure```(프로시저)를 이용하여 작성하는 프로그래밍 스타일이다. ```Procedure```의 목록으로는 루틴, 서브루틴, 메소드, 함수 등이 있다.
 ```c#
-using System;
-using System.Collections.Generic;
-using System.Reflection; /// 
+＃간단히 보는 ```procedure```의 목록
 
-namespace CSharp
-{
-    class Program
-    {
-        class Monster
-        {
-            public int hp;
-
-            protected int attack;
-            private float speed;
-
-            void Attack() { }
-        }
-
-        static void Main(string[] args)
-        {
-            Monster monster = new Monster();
-            Type type = monster.GetType(); 
-
-            // moster가 참조하는 객체에 대한 정보들을 보고싶어요
-            FieldInfo [] fields = type.GetFields(System.Reflection.BindingFlags.Public
-                | System.Reflection.BindingFlags.NonPublic
-                | System.Reflection.BindingFlags.Static
-                | System.Reflection.BindingFlags.Instance);  
-
-            foreach (FieldInfo field in fields)
-            {
-                string access = "protected";
-                if (field.IsPublic)
-                    access = "public";
-                else if (field.IsPrivate)
-                    access = "private";
-
-                Console.WriteLine($"{access} {field.FieldType.Name} {field.Name}");
-            }
-        }
-    }
-}
-```
-```c#
-< 출력 값 >
-
-public Int32 hp
-protected Int32 attack
-private Single speed
+루틴: main 문
+서브루틴: main문 밖에서 정의한 코드 블럭 중에 반환 값이 없는 것
+함수: main문 밖에서 정의한 코드 블럭 중에 반환 값이 있는 것
 ```
 
-- ```Object``` 클래스의 ```GetType()``` 함수
-  -  해당 객체의 정보를 담은 ```Type```을 반환한다. 리턴 받은 이 ```Type```을 통해 ```GetType()```을 호출한 객체의 모든 세세한 정보들을 다 알 수 있다.
-```c#
-Monster monster = new Monster();
-Type type = monster.GetType(); 
-```
-- ```Type``` 클래스의 ```GetFields``` 함수
-  - 현재 ```type```에는 ```monster```가 참조하는 객체의 모든 정보가 들어있다.
-    - ```type```은 객체의 여러가지 정보를 열람할 수 있는 함수와 프로퍼티를 가지고 있다. 멤버 변수(=필드)들의 정보를 배열로 리턴하는 ```GetFields()``` 함수, 객체의 생성자 목록을 배열로 리턴하는 ```GetConstructors()``` 함수, 멤버 함수들의 목록을 리턴하는 ```GetMethods()``` 함수 등등 정말 수~~~많은 함수들을 가지고 있다.
-  - ```GetFields``` 함수는 해당 객체의 멤버 변수(=필드)들을 ```FieldInfo``` 타입의 배열로 리턴한다. ```FieldInfo```타입은 해당 멤버 변수의 정보를 담은 클래스다. 각각의 원소에는 멤버 변수 + 그의 정보가 각각 들어간다. (C# 문서에서 보니 원소의 순서는 꼭 멤버 변수가 선언된 순서와 일치하는 것은 아니라고 한다.)
-    - ```GetFields()``` 매개 변수 없다면 자동으로 모든 ```public``` 멤버 변수(=필드)들의 정보(```FieldInfo```타입 객체)를 ```FieldInfo``` 타입의 배열에 담아 리턴한다.
-- ```FieldInfo``` 타입의 객체 또한 해당 멤버 변수의 정보를 열람할 수 있는 여러 함수와 프로퍼티들을 가지고 있다.
-  - ```IsPublic``` : 해당 멤버 변수가 ```public```이면 ```True```
-  - ```IsPrivate``` : 해당 멤버 변수가 ```private```이면 ```True```
-  - ```field.FieldType.Name``` : 해당 멤버 변수의 자료형 이름
+# Object Oriented Programming(객체 지향) VS Procedural Programming(절차적)
+- 절차적 프로그래밍과 객체지향 프로그래밍은 반대되는 단어가 절.대.로 아님을 이해해야 한다.
 
-## GetType() 과 typeof 의 차이
-```c#
-Monster monster = new Monster();
-Type type = monster.GetType(); 
+|   |객체지향 언어|절차적 언어|
+|----|----|----|
+|장점|- 코드의 재사용성이 용이<br>- 개발이 간단<br>- 유지보수가 쉬움<br>- 대규모 프로젝트에 적합|- 처리속도가 빠름<br>- 컴퓨터의 처리구조와 비슷해 실행속도가 빠름|
+|단점|	- 처리속도가 느림<br>- 객체에 따른 용량 증가<br>- 설계 단계에서 시간이 많이 소요|- 유지보수가 어려움<br>- 대규모 프로젝트에 부적합<br>- 프로젝트 분석이 어려움|
 
-typeof(Monster);
-enum Temp {}
-typeof(Temp);
-typeof(int);
-```
-- ```GetType()```
-  - 런타임 시점. ```Object```를 상속받는 객체 인스턴스의 ```Type```을 알려준다.
-- ```typeof```
-  - 컴파일 시점. 클래스 자체의 ```Type```을 알려준다.
+# 객체 지향 프로그래밍의 5가지 설계 원칙
+1. 단일 책임 원칙 : 클래스는 단 하나의 목적을 가져야 하며, 클래스를 변경하는 이유는 단 하나의 이유여야 한다.
+2. 클래스는 확장에는 열려 있고, 변경에는 닫혀 있어야 한다.
+3. 리스코프 치환 원칙 : 상위 타입의 객체를 하위 타입으로 바꾸어도 프로그램은 일관되게 동작해야 한다.
+4. 인터페이스 분리 원칙 : 클라이언트는 이용하지 않는 메서드에 의존하지 않도록 인터페이스를 분리해야 한다.
+5. 의존 역전 법칙 : 클라이언트는 추상화(인터페이스)에 의존해야 하며, 구체화(구현된 클래스)에 의존해선 안 된다.
+
+# 객체 지향 프로그래밍의 4가지 특징
+- 1. 캡슐화 : 연관있는 변수와 메소드를 묶어주는 작업을 말하며, 
+  - 클래스의 접근을 제한하는 것과 관계가 있다. 
+  - 접근 지정자(```private```, ```protected```, ```public```)를 통해 외부로부터의 접근을 제한하고, 객체 내에서만 접근이 가능하도록(정보 은닉) 해준다. 
+- 2. 추상화 : 객체 지향에서 추상화란 객체에서 필요한 공통된 부분을 추출하는 것
+  - 각각의 클래스는 공통점을 가지는데 추상적인 ```class```로 둘의 공통된 부분을 묶을 수 있다.
+- 3. 상속 : 속은 부모 클래스로부터 공통된 변수와 함수, 인터페이스를 그대로 물려받는 것
+  - 비슷한 객체들의 부모 클래스와 인터페이스를 정의하여 공통화 한 다음 상속받아 객체를 좀 더 다루기 쉽게 한다. 
+  - 추상화에서 각 클래스의 공통된 부분을 묶었다면, 부모 ```class```를 상속받아 거기에 포함된 데이터를 그대로 사용할 수 있다. 
+- 4. 다형성 : 다형성은 같은 종류의 클래스가 하나의 메시지에 대해 서로 다른 행동을 하는 것 
+  - 공통적인 ```class```를 상속받았지만, 각자의 고유한 특징(함수)을 가진다. 
+  - 이렇듯 다형성을 통해 변경이 필요한 부분을 변경하여 사용할 수 있다. 
+  - 다형성은 ```Overriding```, ```Overoading``` 형태로 제공된다.
 
 
 ---
 
 # 참고 사이트
-- [RAPAPA DEV STORY](http://rapapa.net/?p=2550)
-- [공부하는 식빵맘](https://ansohxxn.github.io/c%20sharp/ch9-8/)
+- [극꼼이 이야기](https://geukggom.tistory.com/100)
+- [비전공자의 개발 공부 일지](https://kevinkim95-dev.tistory.com/2)
