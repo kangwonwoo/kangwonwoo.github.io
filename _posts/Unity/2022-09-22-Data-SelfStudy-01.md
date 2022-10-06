@@ -1,7 +1,7 @@
 ---
 title:      C# Self Study#01 | 슬라이더를 이용한 음량 조절, 키(신체) 조절과 게임 종료 버튼 구현
 date:       "2022-09-22"
-categories: ["C#", "01.Data SelfStudy"]
+categories: ["Unity", "01.SelfStudy"]
 tags:       ["C#", "SelfStudy", "Unity"]
 # pin:        true
 ---

@@ -1,7 +1,7 @@
 ---
 title:      C# Grammar#08 | IEnumerator, IEnumerable 및 yield
 date:       "2022-09-30"
-categories: ["C#", "01.Data Structure"]
+categories: ["C#", "01.Structure"]
 tags:       ["C#", "Grammar", "Unity"]
 # pin:        true
 ---

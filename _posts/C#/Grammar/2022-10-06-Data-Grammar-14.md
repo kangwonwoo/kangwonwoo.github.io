@@ -1,7 +1,7 @@
 ---
 title:      C# Grammar#14 | Reflection
 date:       "2022-10-06"
-categories: ["C#", "01.Data Structure"]
+categories: ["C#", "01.Structure"]
 tags:       ["C#", "Grammar", "Unity"]
 # pin:        true
 ---

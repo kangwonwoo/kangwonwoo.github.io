@@ -1,7 +1,7 @@
 ---
 title:      C# Grammar#04 | while, do while
 date:       "2022-09-08"
-categories: ["C#", "01.Data Structure"]
+categories: ["C#", "01.Structure"]
 tags:       ["C#", "Grammar", "Unity"]
 # pin:        true
 ---
