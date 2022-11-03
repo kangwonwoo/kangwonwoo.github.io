@@ -1,7 +1,7 @@
 ---
 title:      C#3 | Bubble Sort
 date:       "2022-11-01"
-categories: ["C#"]
+categories: ["C#", "03.Algorithm"]
 tags:       ["C#", "Algorithm"]
 # pin:        true
 ---

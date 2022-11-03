@@ -1,7 +1,7 @@
 ---
 title:      C#4 | Insertion Sort
 date:       "2022-11-02"
-categories: ["C#"]
+categories: ["C#", "03.Algorithm"]
 tags:       ["C#", "Algorithm"]
 # pin:        true
 ---
